@@ -18,15 +18,15 @@ else if (gamemode.equals("Hard") || gamemode.equals("hard")){
     hardGameStart();
 }
 else{
-    extGameStart();
+    endlGameStart();
 }
 
     }
     
 public static String gamemodeSelection(){
-    System.out.println("Select a Difficulty:\nEasy\nModerate\nHard\nExtreme\n");
+    System.out.println("Select a Difficulty:\nEasy\nModerate\nHard\nEndless\n");
     String difficulty = input.next();
-    while (difficulty.equals("Easy") != true && difficulty.equals("easy") != true && difficulty.equals("Moderate")!=true && difficulty.equals("moderate")!= true && difficulty.equals("Hard")!=true && difficulty.equals("hard") != true && difficulty.equals("Extreme")!=true && difficulty.equals("extreme") != true){
+    while (difficulty.equals("Easy") != true && difficulty.equals("easy") != true && difficulty.equals("Moderate")!=true && difficulty.equals("moderate")!= true && difficulty.equals("Hard")!=true && difficulty.equals("hard") != true && difficulty.equals("Endless")!=true && difficulty.equals("endless") != true){
         System.out.println("Please enter one of the four difficulty values. \n");
         difficulty = input.next();
     }
@@ -170,12 +170,10 @@ public static void hardGameStart(){
     }
     System.out.println("Your score is: " + score);
 }
-public static void extGameStart(){
+public static void endlGameStart(){
     int score = 0;
     int wrongAnswers = 0;
-    int timer = 0;
-    System.out.println("=======\nA potentially infinite number of questions will be presented. You will gain 1 point per correct asnwer.\nDivision is done with 2 decimal places and rounded up.\nThe game will end after three incorrect answers.\nYou have 30 seconds to answer a question.\n=======\n");
-    do {
+    System.out.println("=======\nA potentially infinite number of questions will be presented. You will gain 1 point per correct asnwer.\nDivision is done with 2 decimal places and rounded up.\nThe game will end after three incorrect answers.\n=======\n");
     do {
     Random r = new Random();
         do{
@@ -185,7 +183,6 @@ public static void extGameStart(){
         while (num1 == 0 || num2 == 0);
         sign = r.nextInt(4);
         float ansC = calcAns(num1, sign, num2);
-        timer = timer();
          if (sign == 0){
             System.out.println(num1 + " + " + num2 + "\r[Wrong Answers: " + wrongAnswers + "]\r");
         }
@@ -216,22 +213,7 @@ public static void extGameStart(){
         num2 = 0;
         
 }
-while (timer == 0 && wrongAnswers < 3);
-}
-while (timer == 1);
+while (wrongAnswers < 3);
 System.out.println("Your score is: " + score);
 }
-public static int timer() {
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-		  @Override
-		  public void run() {
-		    System.out.println("Time's up!");
-		    timer.cancel();
-        timer.purge();
-		  }
-		}, 30000, 30000);
-		 return 1;
-		
-	}
 }
