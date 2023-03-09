@@ -1,0 +1,237 @@
+import java.util.*;
+import java.lang.Math;
+class HelloWorld {
+    static float num1, num2;
+    static int sign;
+  static String gamemode;
+    static Scanner input = new Scanner(System.in);
+    public static void main(String[] args) {
+gamemode = gamemodeSelection();
+
+if (gamemode.equals("Easy") || gamemode.equals("easy")){
+    easyGameStart();
+}
+else if (gamemode.equals("Moderate") || gamemode.equals("moderate")){
+    modGameStart();
+}
+else if (gamemode.equals("Hard") || gamemode.equals("hard")){
+    hardGameStart();
+}
+else{
+    extGameStart();
+}
+
+    }
+    
+public static String gamemodeSelection(){
+    System.out.println("Select a Difficulty:\nEasy\nModerate\nHard\nExtreme\n");
+    String difficulty = input.next();
+    while (difficulty.equals("Easy") != true && difficulty.equals("easy") != true && difficulty.equals("Moderate")!=true && difficulty.equals("moderate")!= true && difficulty.equals("Hard")!=true && difficulty.equals("hard") != true && difficulty.equals("Extreme")!=true && difficulty.equals("extreme") != true){
+        System.out.println("Please enter one of the four difficulty values. \n");
+        difficulty = input.next();
+    }
+    return difficulty;
+}
+
+public static float calcAns(float n1, int si, float n2){
+    float ans = 0;
+    if (si == 0){
+        ans = n1 + n2;
+    }
+    else if (si == 1){
+        ans = n1 - n2;
+    }
+    else if (si == 2){
+        ans = n1 * n2;
+    }
+    else if (si == 3){
+        ans = (n1 / n2);
+        ans = ans * 100;
+        ans = Math.round(ans);
+        ans = ans / 100;
+    }
+    return ans;
+}
+
+public static void easyGameStart(){
+    int score = 0;
+    System.out.println("=======\n8 Questions will be presented. You will gain 1 point per correct asnwer. \nDivision is done with 2 decimal places and rounded up. \n =======\n");
+    for (int qnum = 0; qnum < 8; qnum ++){
+        Random r = new Random();
+        do{
+        num1 = (r.nextInt(12));
+        num2 = (r.nextInt(12));
+        }
+        while (num1 == 0 || num2 == 0);
+        sign = r.nextInt(4);
+        float ansC = calcAns(num1, sign, num2);
+        if (sign == 0){
+            System.out.println(num1 + " + " + num2 + "\r");
+        }
+        else if (sign == 1){
+            System.out.println(num1 + " - " + num2 + "\r");
+        }
+         else if (sign == 2){
+            System.out.println(num1 + " x " + num2 + "\r");
+        }
+         else if (sign == 3){
+            System.out.println(num1 + " / " + num2 + "\r");
+        }
+        float ansY = input.nextFloat();
+        if (ansC == ansY){
+            System.out.println("Correct! \n");
+           
+            score ++;
+        }
+        else{
+            System.out.println("Incorrect. The correct answer is: " + ansC + "\n");
+          
+        }
+        num1 = 0;
+        num2 = 0;
+    }
+    System.out.println("Your score is: " + score);
+}
+public static void modGameStart(){
+    int score = 0;
+    System.out.println("=======\n10 Questions will be presented. You will gain 1 point per correct asnwer. \nDivision is done with 2 decimal places and rounded up. \n=======\n");
+    for (int qnum = 0; qnum < 10; qnum ++){
+        Random r = new Random();
+        do{
+        num1 = -12 + r.nextInt(25);
+        num2 = -12 + r.nextInt(25);
+        }
+        while (num1 == 0 || num2 == 0);
+        sign = r.nextInt(4);
+        float ansC = calcAns(num1, sign, num2);
+        if (sign == 0){
+            System.out.println(num1 + " + " + num2 + "\r");
+        }
+        else if (sign == 1){
+            System.out.println(num1 + " - " + num2 + "\r");
+        }
+         else if (sign == 2){
+            System.out.println(num1 + " x " + num2 + "\r");
+        }
+         else if (sign == 3){
+            System.out.println(num1 + " / " + num2 + "\r");
+        }
+        float ansY = input.nextFloat();
+        if (ansC == ansY){
+            System.out.println("Correct! \n");
+           
+            score ++;
+        }
+        else{
+            System.out.println("Incorrect. The correct answer is: " + ansC + "\n");
+          
+        }
+        num1 = 0;
+        num2 = 0;
+    }
+    System.out.println("Your score is: " + score);
+}
+public static void hardGameStart(){
+    int score = 0;
+    System.out.println("=======\n15 Questions will be presented. You will gain 1 point per correct asnwer. \nDivision is done with 2 decimal places and rounded up. \n=======\n");
+    for (int qnum = 0; qnum < 15; qnum ++){
+        Random r = new Random();
+        do{
+        num1 = -15 + r.nextInt(31);
+        num2 = -15 + r.nextInt(31);
+        }
+        while (num1 == 0 || num2 == 0);
+        sign = r.nextInt(4);
+        float ansC = calcAns(num1, sign, num2);
+        if (sign == 0){
+            System.out.println(num1 + " + " + num2 + "\r");
+        }
+        else if (sign == 1){
+            System.out.println(num1 + " - " + num2 + "\r");
+        }
+         else if (sign == 2){
+            System.out.println(num1 + " x " + num2 + "\r");
+        }
+         else if (sign == 3){
+            System.out.println(num1 + " / " + num2 + "\r");
+        }
+        float ansY = input.nextFloat();
+        if (ansC == ansY){
+            System.out.println("Correct! \n");
+           
+            score ++;
+        }
+        else{
+            System.out.println("Incorrect. The correct answer is: " + ansC + "\n");
+          
+        }
+        num1 = 0;
+        num2 = 0;
+    }
+    System.out.println("Your score is: " + score);
+}
+public static void extGameStart(){
+    int score = 0;
+    int wrongAnswers = 0;
+    int timer = 0;
+    System.out.println("=======\nA potentially infinite number of questions will be presented. You will gain 1 point per correct asnwer.\nDivision is done with 2 decimal places and rounded up.\nThe game will end after three incorrect answers.\nYou have 30 seconds to answer a question.\n=======\n");
+    do {
+    do {
+    Random r = new Random();
+        do{
+        num1 = -20 + r.nextInt(41);
+        num2 = -20 + r.nextInt(41);
+        }
+        while (num1 == 0 || num2 == 0);
+        sign = r.nextInt(4);
+        float ansC = calcAns(num1, sign, num2);
+        timer = timer();
+         if (sign == 0){
+            System.out.println(num1 + " + " + num2 + "\r[Wrong Answers: " + wrongAnswers + "]\r");
+        }
+        else if (sign == 1){
+            System.out.println(num1 + " - " + num2 + "\r[Wrong Answers: " + wrongAnswers + "]\r");
+        }
+         else if (sign == 2){
+            System.out.println(num1 + " x " + num2 + "\r[Wrong Answers: " + wrongAnswers + "]\r");
+        }
+         else if (sign == 3){
+            System.out.println(num1 + " / " + num2 + "\r[Wrong Answers: " + wrongAnswers + "]\r");
+        }
+        float ansY = input.nextFloat();
+        if (ansC == ansY){
+            System.out.println("Correct! \n");
+           
+            score ++;
+        }
+        else{
+            System.out.println("Incorrect. The correct answer is: " + ansC + "\n");
+            wrongAnswers ++;
+            if  (wrongAnswers == 3){
+                System.out.println("You have been incorrect 3 times. The quiz is over.");
+            }
+          
+        }
+        num1 = 0;
+        num2 = 0;
+        
+}
+while (timer == 0 && wrongAnswers < 3);
+}
+while (timer == 1);
+System.out.println("Your score is: " + score);
+}
+public static int timer() {
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+		  @Override
+		  public void run() {
+		    System.out.println("Time's up!");
+		    timer.cancel();
+        timer.purge();
+		  }
+		}, 30000, 30000);
+		 return 1;
+		
+	}
+}
