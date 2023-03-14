@@ -1,0 +1,26 @@
+import java.util.*;
+class HelloWorld {
+    public static void main(String[] args) {
+        final int SIZE = 3; 
+        int[] num = new int[SIZE]; int count=0, max=0;
+        Scanner input = new Scanner(System.in);
+        do{
+        System.out.println("Enter a number (" + (count + 1) + ")\n");
+        
+        num[count] = input.nextInt();
+      
+        count ++;
+    }
+    while (count < SIZE);
+   if (num[0] >= num[1] && num[0] >= num[2]){
+        max = num[0];
+   }
+    else if (num[1] >= num[0] && num[1] >= num[2]){ 
+         max = num[1];
+}
+else{
+     max = num[2];
+}
+System.out.println("The maximum number is: " + max);
+}
+}
