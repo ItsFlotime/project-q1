@@ -14,7 +14,7 @@ class HelloWorld {
        if (num == 0){
            System.out.println(num + " is not a prime number.");
        }
-       else if (num == 1){
+       else if (num == 1 || num == 2){
            System.out.println(num + " is a prime number.");
        }
        else if (num > 1){
