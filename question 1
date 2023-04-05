@@ -1,20 +1,22 @@
 import java.util.*;
 import java.lang.Math;
 class HelloWorld {
+// variable declaration
     static float num1, num2;
     static int sign;
   static String gamemode;
     static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
+    // starts the process of selecting between gamemodews
 gamemode = gamemodeSelection();
 
-if (gamemode.equals("Easy") || gamemode.equals("easy")){
+if (gamemode.equalsIgnoreCase("Easy")){
     easyGameStart();
 }
-else if (gamemode.equals("Moderate") || gamemode.equals("moderate")){
+else if (gamemode.equalsIgnoreCase("Moderate")){
     modGameStart();
 }
-else if (gamemode.equals("Hard") || gamemode.equals("hard")){
+else if (gamemode.equalsIgnoreCase("Hard")
     hardGameStart();
 }
 else{
@@ -24,15 +26,17 @@ else{
     }
     
 public static String gamemodeSelection(){
+// inputting the prefered gamemode
     System.out.println("Select a Difficulty:\nEasy\nModerate\nHard\nEndless\n");
     String difficulty = input.next();
-    while (difficulty.equals("Easy") != true && difficulty.equals("easy") != true && difficulty.equals("Moderate")!=true && difficulty.equals("moderate")!= true && difficulty.equals("Hard")!=true && difficulty.equals("hard") != true && difficulty.equals("Endless")!=true && difficulty.equals("endless") != true){
+    // input validation
+    while (difficulty.equalsIgnoreCase("easy") != true && difficulty.equalsIgnoreCase("Moderate")!=true && difficulty.equalsIgnoreCase("Hard")!=true && difficulty.equalsIgnoreCase("Endless")!=true){
         System.out.println("Please enter one of the four difficulty values. \n");
         difficulty = input.next();
     }
     return difficulty;
 }
-
+// answer calculation
 public static float calcAns(float n1, int si, float n2){
     float ans = 0;
     if (si == 0){
@@ -53,10 +57,13 @@ public static float calcAns(float n1, int si, float n2){
     return ans;
 }
 
+// starting the easy gamemode
 public static void easyGameStart(){
     int score = 0;
     System.out.println("=======\n8 Questions will be presented. You will gain 1 point per correct asnwer. \nDivision is done with 2 decimal places and rounded up. \n =======\n");
     for (int qnum = 0; qnum < 8; qnum ++){
+    
+    //generating random numbers and a random sign
         Random r = new Random();
         do{
         num1 = (r.nextInt(12));
@@ -64,7 +71,11 @@ public static void easyGameStart(){
         }
         while (num1 == 0 || num2 == 0);
         sign = r.nextInt(4);
+        
+        //retrieving the answer
         float ansC = calcAns(num1, sign, num2);
+        
+        // displaying the question
         if (sign == 0){
             System.out.println(num1 + " + " + num2 + "\r");
         }
@@ -90,6 +101,7 @@ public static void easyGameStart(){
         num1 = 0;
         num2 = 0;
     }
+    // displaying score at the end
     System.out.println("Your score is: " + score);
 }
 public static void modGameStart(){
@@ -204,6 +216,7 @@ public static void endlGameStart(){
         else{
             System.out.println("Incorrect. The correct answer is: " + ansC + "\n");
             wrongAnswers ++;
+            // ending the game after 3 wrong answers
             if  (wrongAnswers == 3){
                 System.out.println("You have been incorrect 3 times. The quiz is over.");
             }
