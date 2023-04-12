@@ -6,40 +6,45 @@ public class rps {
         // Scanner object to track input.
         Scanner input = new Scanner(System.in);
        
+        // Variable + loop that allows player to retry.
+String agn;
+do{
         // Method that returns its output into the computer choice variable.
         String cChoice = compChoice();
         
-        System.out.println("Enter either r, p, or s.");
+        System.out.println("Enter either rock, paper, or scissors.");
         
         // Entering user's choice.
         String uChoice = input.nextLine();
         // Input validation to prevent user from entering something incorrect and to accept capital letters
-        while (uChoice.equalsIgnoreCase("r") == false && uChoice.equalsIgnoreCase("p") == false && uChoice.equalsIgnoreCase("s") == false){
-             System.out.println("Please enter either r, p, or s.");
+        while (uChoice.equalsIgnoreCase("rock") == false && uChoice.equalsIgnoreCase("paper") == false && uChoice.equalsIgnoreCase("scissors") == false){
+             System.out.println("Please enter either rock, paper, or scissors.");
              uChoice = input.nextLine();
         }
         // If/else structure to determine winner.
         if (uChoice.equals(cChoice) == true){
             System.out.println("Computer's choice was " + cChoice + ". The game is a draw.");
         }
-        else if (uChoice.equalsIgnoreCase("r") && cChoice.equals("p") || uChoice.equalsIgnoreCase("p") && cChoice.equals("s") || uChoice.equalsIgnoreCase("s") && cChoice.equals("r")){
+        else if (uChoice.equalsIgnoreCase("rock") && cChoice.equals("paper") || uChoice.equalsIgnoreCase("paper") && cChoice.equals("scissors") || uChoice.equalsIgnoreCase("scissors") && cChoice.equals("rock")){
             System.out.println("Computer's choice was " + cChoice + ". You lose.");
         }
-        else if (uChoice.equalsIgnoreCase("r") && cChoice.equals("s") || uChoice.equalsIgnoreCase("s") && cChoice.equals("p") || uChoice.equalsIgnoreCase("p") && cChoice.equals("r")){
+        else if (uChoice.equalsIgnoreCase("rock") && cChoice.equals("scissors") || uChoice.equalsIgnoreCase("scissors") && cChoice.equals("paper") || uChoice.equalsIgnoreCase("paper") && cChoice.equals("rock")){
             System.out.println("Computer's choice was " + cChoice + ". You win!");
         }
+System.out.println("If you would like to play again, enter 'y'");
+agn = input.nextLine();
     }
-    
+    while (agn.equalsIgnoreCase("y") == true);
     static String compChoice(){
      int choice = (int)Math.floor(Math.random() *(3 - 1 + 1) + 1);
         if (choice == 1){
-            return "r";
+            return "rock";
         }
         else if (choice == 2){
-            return "p";
+            return "paper";
         }
         else{
-            return "s";
+            return "scissors";
         }
 }
 }
